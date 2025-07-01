@@ -12,11 +12,13 @@
   
   <style>
     body { margin: 0; overflow: hidden; }
-    /* Optional: add your CSS here */
   </style>
 </head>
 <body>
-  <a-scene renderer="physicallyCorrectLights: true;">
+  <a-scene
+    renderer="physicallyCorrectLights: true;"
+    vr-mode-ui="enabled: true"
+  >
     <a-assets>
       <template id="avatar-template">
         <a-entity class="avatar">
@@ -32,18 +34,30 @@
     </a-assets>
 
     <a-entity id="cameraRig" position="10 1.6 60" movement-controls="fly:true; speed:0.1;">
-      <a-entity camera position="1 2 2" wasd-controls="acceleration:25;fly:true;verticalFlySpeed:0.1;" look-controls>
+      <a-entity
+        camera
+        position="1 2 2"
+        wasd-controls="acceleration:25;fly:true;verticalFlySpeed:0.1;"
+        look-controls
+      >
         <a-sphere class="head" visible="false" random-color></a-sphere>
       </a-entity>
     </a-entity>
 
-    <a-entity 
+    <a-entity
       gltf-model="RVE_porosity_T15.glb"
-      position="10 0 10" rotation="90 0 0" scale="10.2 10.2 10.2">
-    </a-entity>
+      position="10 0 10"
+      rotation="90 0 0"
+      scale="10.2 10.2 10.2"
+    ></a-entity>
 
     <a-entity environment="preset: default"></a-entity>
     <a-entity light="type:ambient; intensity:2.0"></a-entity>
+
+    <!-- Add basic VR controllers for hand input -->
+    <a-entity laser-controls="hand: left"></a-entity>
+    <a-entity laser-controls="hand: right"></a-entity>
   </a-scene>
 </body>
 </html>
+
